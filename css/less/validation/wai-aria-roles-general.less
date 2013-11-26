@@ -1,0 +1,20 @@
+/****No Role Attributes on Usual Suspects ****/
+header:not([role="banner"]),
+main:not([role="main"]),
+footer:not([role="contentinfo"]),
+nav:not([role="navigation"]),
+section:not([role="region"]),
+aside:not([role="complementary"]) {
+	.animation1;
+	outline-color: @warning-color;
+	&:before:extend(.message) {
+		position: absolute;
+		content: "Recommended to add Role Attribute";
+	}
+}
+
+/* Or less patronising, an idea, that is not working yet
+body *:not([role]):nth-child(1) {
+	outline: 3px solid red;
+}
+*/

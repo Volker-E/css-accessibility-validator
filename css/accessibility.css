@@ -26,7 +26,13 @@ input[type="url"]:not([placeholder]):before,
 input[type="search"]:not([placeholder]):before,
 input[type="tel"]:not([placeholder]):before,
 textarea:not([placeholder]):before,
-*[style]:before {
+*[style]:before,
+header:not([role="banner"]):before,
+main:not([role="main"]):before,
+footer:not([role="contentinfo"]):before,
+nav:not([role="navigation"]):before,
+section:not([role="region"]):before,
+aside:not([role="complementary"]):before {
   width: 190px;
   padding: 10px;
   -moz-box-sizing: border-box;
@@ -41,7 +47,6 @@ textarea:not([placeholder]):before,
   outline: solid 3px red;
   opacity: 0.2;
   animation: accessibility-test 0.3s linear 0s infinite alternate;
-  /* Safari and Chrome: */
   -webkit-animation: accessibility-test 0.3s linear 0s infinite alternate;
 }
 @keyframes accessibility-test {
@@ -77,13 +82,14 @@ textarea:not([placeholder]):before,
 /**Errors**/
 img {
   /****missing alt****/
+
   /****empty alt or title****/
+
 }
 img:not([alt]) {
   outline: solid 3px red;
   opacity: 0.2;
   animation: accessibility-test 0.3s linear 0s infinite alternate;
-  /* Safari and Chrome: */
   -webkit-animation: accessibility-test 0.3s linear 0s infinite alternate;
   outline-color: #ff0000;
 }
@@ -96,7 +102,6 @@ img[title=""] {
   outline: solid 3px red;
   opacity: 0.2;
   animation: accessibility-test 0.3s linear 0s infinite alternate;
-  /* Safari and Chrome: */
   -webkit-animation: accessibility-test 0.3s linear 0s infinite alternate;
   outline-color: #ff0000;
 }
@@ -110,7 +115,6 @@ a:empty {
   outline: solid 3px red;
   opacity: 0.2;
   animation: accessibility-test 0.3s linear 0s infinite alternate;
-  /* Safari and Chrome: */
   -webkit-animation: accessibility-test 0.3s linear 0s infinite alternate;
   outline-color: #ff0000;
   min-width: 10px;
@@ -158,7 +162,6 @@ h6:empty {
   outline: solid 3px red;
   opacity: 0.2;
   animation: accessibility-test 0.3s linear 0s infinite alternate;
-  /* Safari and Chrome: */
   -webkit-animation: accessibility-test 0.3s linear 0s infinite alternate;
   outline-color: #ff0000;
   min-height: 3px;
@@ -215,7 +218,6 @@ textarea:not([placeholder]) {
   outline: solid 3px red;
   opacity: 0.2;
   animation: accessibility-test 0.3s linear 0s infinite alternate;
-  /* Safari and Chrome: */
   -webkit-animation: accessibility-test 0.3s linear 0s infinite alternate;
   outline-color: #ffa500;
 }
@@ -240,14 +242,13 @@ label[for] + textarea:not([placeholder]) {
   opacity: 1;
 }
 /**Recommended**/
-/*un-recommended HTML Tags*/
+/*Not recommended HTML Tags*/
 iframe,
 embed,
 object {
   outline: solid 3px red;
   opacity: 0.2;
   animation: accessibility-test 0.3s linear 0s infinite alternate;
-  /* Safari and Chrome: */
   -webkit-animation: accessibility-test 0.3s linear 0s infinite alternate;
   outline-color: #0000ff;
 }
@@ -262,7 +263,6 @@ object:before {
   outline: solid 3px red;
   opacity: 0.2;
   animation: accessibility-test 0.3s linear 0s infinite alternate;
-  /* Safari and Chrome: */
   -webkit-animation: accessibility-test 0.3s linear 0s infinite alternate;
   outline-color: #0000ff;
 }
@@ -270,3 +270,30 @@ object:before {
   position: absolute;
   content: "Inline Styles!";
 }
+/****No Role Attributes on Usual Suspects ****/
+header:not([role="banner"]),
+main:not([role="main"]),
+footer:not([role="contentinfo"]),
+nav:not([role="navigation"]),
+section:not([role="region"]),
+aside:not([role="complementary"]) {
+  outline: solid 3px red;
+  opacity: 0.2;
+  animation: accessibility-test 0.3s linear 0s infinite alternate;
+  -webkit-animation: accessibility-test 0.3s linear 0s infinite alternate;
+  outline-color: #ffa500;
+}
+header:not([role="banner"]):before,
+main:not([role="main"]):before,
+footer:not([role="contentinfo"]):before,
+nav:not([role="navigation"]):before,
+section:not([role="region"]):before,
+aside:not([role="complementary"]):before {
+  position: absolute;
+  content: "Recommended to add Role Attribute";
+}
+/* Or less patronising, an idea, that is not working yet
+body *:not([role]):nth-child(1) {
+	outline: 3px solid red;
+}
+*/
